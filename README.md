@@ -1,7 +1,5 @@
 # About this Project
 
-### Preview:-
-
 I have created a KANBAN Board in React Typescript with Functionalities Like: 
 >1. Implement drag-and-drop functionality to allow users to move cards within boards.
 >2. Create a user signup feature for storing user data securely.
