@@ -1,0 +1,272 @@
+.custom-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  border-radius: 50px;
+  /* border: 1px solid #ccc; */
+  mix-blend-mode: difference;
+  background-color: #0000007a;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  border: 1px solid gray;
+}
+
+.app {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  background-color: #13131b;
+  flex-direction: column;
+}
+.Nav-Icons{
+  width:80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ProfileIcons{
+  width: 40px;
+  object-fit: cover;
+}
+.app_nav {
+  padding: 8px;
+  box-shadow: 0 1px 20px rgba(56, 40, 40, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  display: flex;
+    justify-content: space-between;
+    align-items: center;
+  color: white;
+}
+
+.app_boards_container {
+  flex: 1 1;
+  width: 100%;
+  display: flex;
+  height: 100%;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  
+}
+
+.app_boards {
+  height: 100%;
+  width: fit-content;
+  padding: 10px 30px;
+  display: flex;
+  gap: 120px;
+  margin: 0px auto;
+}
+
+.app_boards_last {
+  flex-basis: 290px;
+  min-width: 290px;
+}
+
+.app_boards_add-board {
+  background-color: #fff;
+  color: #000;
+  border-radius: 10px;
+  box-shadow: 1px 1px 0 1px rgba(0, 0, 0, 0.12);
+  width: 100%;
+  text-align: center;
+}
+.app_boards_add-board_edit {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+}
+.input-user-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.labelImg{
+  transition: all ease-in 500ms;
+}
+.labelImg:hover{
+filter: blur(2px);
+transition: all ease-in 500ms;
+}
+.input-user-img .labelImg {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.Submit{
+  width:300px;
+  height: 50px;
+  border-radius: 2rem;
+  background-color: #3573f8;
+
+  font-size: 1.2rem;
+  border: none;
+  margin: 10px;
+  cursor: pointer;
+  transition: all ease-in 200ms;
+}
+.Submit:hover{
+  background-color: #5c8fff;
+  transition: all ease-in 200ms;
+}
+#checkbox{
+  width: 20px;
+  margin-right: 5px;
+  margin-top: 2px;
+}
+.Show-Password{
+  display: flex;
+  justify-content: flex-end;
+  font-size: 20px;
+  padding: 5px 10px 0px 0px;
+}
+.labelSubmit{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Delete{
+  margin: 10px;
+  width: 300px;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 2rem;
+  background-color: #f8513b;
+  font-size: 1.2rem;
+  transition: all ease-in 200ms;
+  border: none;
+}
+.Delete:hover{
+  background-color: #f87b6b;
+  transition: all ease-in 200ms;
+}
+.input-user-img .labelImg img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.input-user-img .inputImg {
+  display: none;
+}
+.Update-Form{
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  flex-direction: column;
+  gap: 10px;
+}
+.Form-input{
+  width: 21rem;
+  height: 40px;
+  font-size: 16px;
+  padding: 15px;
+  border-radius: 1rem;
+  background-color: #ffffff0f;
+  border: none;
+  color: white;
+}
+.app_boards_container::-webkit-scrollbar
+{
+	width: 2px;
+	background-color: #f5f5f500;
+}
+
+.app_boards_container::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+	background-color: #2e2b2b;
+}
+.footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  color: white;
+  position:absolute;
+  width: 100%;
+  bottom: 0px;
+  padding:10px 5px;
+}
+.Note{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #ffffffa1;
+  padding: 0px 10px;
+}
+.ButtonSection{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.Change{
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.Sign{
+  width: 100%;
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+}
+.SignButton{
+  width: 120px;
+  border-radius: 2rem;
+  border: none;
+  background-color: #53bbd6;
+  height: 40px;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+fieldset {
+  border:1px solid gray;
+}
+legend {
+  padding: 0.2em 0.5em;
+  color: gray;
+  font-size: 30px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Form-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  gap: 20px;
+}
+.Sign-button{
+  width: 60%;
+    height: 50px;
+    border-radius: 2rem;
+    font-size: 25px;
+    border: none;
+    font-family: system-ui;
+    background: #6882ee;
+}

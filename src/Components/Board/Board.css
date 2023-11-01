@@ -1,0 +1,71 @@
+.board {
+  min-width: 290px;
+  width: 290px;
+  max-height: 100%;
+  flex-basis: 290px;
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow: hidden;
+  padding-bottom: 5px;
+  color: white;
+}
+
+.board_header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.board_header_title {
+  font-weight: bold;
+  font-size: 20px;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  display: flex;
+  gap: 5px;
+  padding-top: 10px;
+  align-items: center;
+}
+
+.board_header_title span {
+  color: rgb(177 177 177 / 88%);
+}
+
+.board_header_title_more {
+  cursor: pointer;
+  position: relative;
+}
+
+.board_dropdown {
+  box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.12);
+  padding: 10px;
+  width: 120px !important;
+  cursor: default;
+}
+.board_dropdown p {
+  cursor: pointer;
+}
+
+.board_cards {
+  padding:0px 10px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+}
+
+.board_add-card {
+  background-color: #fff;
+  color: #000;
+  border-radius: 10px;
+  box-shadow: 1px 1px 0 1px rgba(0, 0, 0, 0.12);
+  width: 100%;
+  text-align: center;
+}
+.board_add-card_edit {
+  background-color: #ffffff19;
+  border-radius: 10px;
+  padding: 10px;
+}

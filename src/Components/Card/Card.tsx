@@ -1,0 +1,157 @@
+import React, { useState } from "react";
+import { CheckSquare, Clock, MoreHorizontal } from "react-feather";
+
+import Dropdown from "../Dropdown/Dropdown";
+
+import "./Card.css";
+import CardInfo from "./CardInfo/CardInfo";
+import { Draggable } from "react-beautiful-dnd";
+import styled from "styled-components";
+
+const Container = styled.div<{ isDragging: boolean }>`
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #ffffff2b;
+  border-radius: 10px;
+`;
+interface Container{
+  isDraggingOver:boolean;
+}
+interface Label {
+  text: string;
+  color: string;
+}
+
+interface Task {
+  id: number;
+  completed: boolean;
+  text: string;
+}
+
+interface Card {
+  id: number;
+  title: string;
+  desc: string;
+  date: string;
+  labels: Label[];
+  tasks: Task[];
+  index: number;
+
+}
+
+interface CardProps {
+  card: Card;
+  boardId: number;
+  dragEntered:any;
+  dragEnded:any;
+  index: number;
+  updateCard: (bid: number, cid: number, card: Card) => void;
+  removeCard: (bid: number, cid: number) => void;
+}
+
+const Card: React.FC<CardProps> = (props) => {
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const { id, title, desc, date, labels, index, tasks } = props.card;
+
+  const formatDate = (value: string | undefined): string => {
+    if (!value) return "";
+    const date = new Date(value);
+    if (!date) return "";
+
+    const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Aprl",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+
+    const day = date.getDate();
+    const month = months[date.getMonth()];
+    return day + " " + month;
+  };
+
+  return (
+    <>
+      {showModal && (
+        <CardInfo
+          onClose={() => setShowModal(false)}
+          card={props.card}
+          boardId={props.boardId}
+          updateCard={props.updateCard}
+        />
+      )}
+      <Draggable draggableId={`${id}`} index={index}>
+        {(provided, snapshot) => (
+          <Container                        //Styled Component container
+            className="card"
+            ref={provided.innerRef}
+            {...provided.dragHandleProps}
+            {...provided.draggableProps}
+            isDragging={snapshot.isDragging}
+            onClick={() => setShowModal(true)}
+          >
+            <div className="card_top">
+              <div className="card_top_labels">
+                {labels?.map((item, index) => (
+                  <label key={index} style={{ backgroundColor: item.color }}>
+                    {item.text}
+                  </label>
+                ))}
+              </div>
+              <div
+                className="card_top_more"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  setShowDropdown(true);
+                }}
+              >
+                <MoreHorizontal />
+                {showDropdown && (
+                  <Dropdown                     //Dropdown Delete Card Component
+                    class="board_dropdown"
+                    onClose={() => setShowDropdown(false)}
+                  >
+                    <p onClick={() => props.removeCard(props.boardId, id)}>
+                      Delete
+                    </p>
+                  </Dropdown>
+                )}
+              </div>
+            </div>
+            <div className="card_title">{title}</div>
+            <div className="card_description">{desc}</div>
+            <div className="card_footer">
+              {date && (
+                <p className="card_footer_item">
+                  <Clock className="card_footer_icon" />
+                  {formatDate(date)}
+                </p>
+              )}
+              {tasks && tasks?.length > 0 && (
+                <p className="card_footer_item">
+                  <CheckSquare className="card_footer_icon" />
+                  {tasks?.filter((item) => item.completed)?.length}/{tasks?.length}
+                </p>
+              )}
+            </div>
+            
+          </Container>
+        )}
+      </Draggable>
+    </>
+  );
+};
+
+export default Card;
