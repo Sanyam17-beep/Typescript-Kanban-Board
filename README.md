@@ -9,7 +9,7 @@ I have created a KANBAN Board in React Typescript with Functionalities Like:
 >4. Implement a user profile update feature.
 >5. Utilize Passport.js and JWT tokens for authentication.  
 >6. Provide the option for users to sign out while preserving their data in the cloud using MongoDB. 
-
+>7. Implmented Page Transition fade In effect using Framer-motion 
 #### *Frontend - Reactjs using TypeScript.*
 #### *Backend - Nodejs and Express using TypeScript.*
 
