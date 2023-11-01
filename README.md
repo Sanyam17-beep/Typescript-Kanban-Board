@@ -1,6 +1,7 @@
 # About this Project
 
 ### Preview:-
+[Screen Recording - Made with FlexClip.webm](https://github.com/Sanyam17-beep/Typescript-Kanban-Board/assets/84903641/bae6c794-ec65-4177-8066-f83e197c5097)
 
 I have created a KANBAN Board in React Typescript with Functionalities Like: 
 >1. Implement drag-and-drop functionality to allow users to move cards within boards.
