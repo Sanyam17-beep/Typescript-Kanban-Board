@@ -7,6 +7,7 @@ import Transition from "../transition/Transition";
 import { DragDropContext, Droppable, DropResult, DroppableProvided, DroppableStateSnapshot } from "react-beautiful-dnd";
 import styled from "styled-components";
 import Card from "../Components/Card/Card";
+import Dropdown from "../Components/Dropdown/Dropdown";
 const dummyCard = {
   id: -1,
   title: "Sample Card",
@@ -82,8 +83,25 @@ function Home() {
   const initialBoards = savedBoards || defaultBoards;
 
   const [boards, setBoards] = useState<BoardType[]>(initialBoards);
-
-
+  const [Type, setType] = useState<string>("password");
+  const [name, setname] = useState<string>("");
+  const [email, setemail] = useState<string>("");
+  const [pass,setPass] = useState("");
+  const updateUser = async(event:any)=>{
+    event.preventDefault();
+    const uid = localStorage.getItem("userid");
+    await fetch(`https://test-back-jeji.onrender.com/updateUser/${uid}`,{
+      method:"PUT",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify({username:name,email:email,password:pass})
+    }).then((res)=>{
+      alert("updated successfully");
+    }).catch((err)=>
+      alert("Server error")
+    )
+  }
   const [targetCard, setTargetCard] = useState<{
     bid: string;
     cid: string;
@@ -239,7 +257,9 @@ function Home() {
 
   useEffect(() => {
     localStorage.setItem("prac-kanban",JSON.stringify(boards));
+  
   }, [boards]);
+  const [showDropdown, setShowDropdown] = useState(false);
   const [userImg, setUserImg] = useState<string>(
     "https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Blonde&facialHairType=Blank&clotheType=ShirtCrewNeck&clotheColor=Pink&eyeType=Surprised&eyebrowType=AngryNatural&mouthType=Smile&skinColor=Light"
   ); 
@@ -248,6 +268,12 @@ function Home() {
       <div className="app_nav">
         <h1 onClick={() => navigateHandler('/home')}>KANBAN</h1>
         <div className="Nav-Icons">
+        <div
+                onClick={(event) => {
+                  event.stopPropagation();
+                  setShowDropdown(true);
+                }}
+              >
           <img
             src={
               userImg
@@ -255,9 +281,66 @@ function Home() {
                 : "https://avatars.dicebear.com/api/adventurer-neutral/mail%40ashallendesign.co.uk.svg"
             }
             alt="A"
+           
             className="ProfileIcons"
-            onClick={() => navigateHandler('/update')}
           />
+          {showDropdown && (
+                  <Dropdown                     //Dropdown Delete Card Component
+                    class="board_dropdown"
+                    onClose={() => setShowDropdown(false)}
+                  >
+                   <div className="Update-Form">
+          <label htmlFor="inputName" className="labelName">
+            <input
+              type="text"
+              placeholder="Username"
+              value={name}
+              onChange={(e) => {
+                setname(e.target.value);
+              }}
+              className="Form-input"
+            />
+          </label>
+          <label htmlFor="inputEmail" className="labelEmail">
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => {
+                setemail(e.target.value);
+              }}
+              className="Form-input"
+            />
+          </label>
+          <label htmlFor="inputPassword" className="labelPassword">
+            <input
+              type={Type}
+              placeholder="New Password"
+              value={pass}
+              onChange={(e)=>setPass(e.target.value)}
+              className="Form-input"
+            />{" "}
+            <br />
+            <div className="Show-Password">
+              <input
+                type="checkbox"
+                id="checkbox"
+              
+                onClick={() => {
+                  if (Type === "password") setType("text");
+                  else setType("password");
+                }}
+              />{" "}
+              <span style={{ color: "white" }} >Show Password</span>
+            </div>
+          </label>
+          <label htmlFor="Submit" className="labelSubmit">
+            <input type="submit" value="Update" style={{cursor:"pointer"}} onClick={(event)=>updateUser(event)} className="Submit" />
+          </label>
+        </div>
+                  </Dropdown>
+                )}
+          </div>
           <LogOut height={30} width={30} onClick={() =>signOut()} />
         </div>
       </div>
