@@ -260,9 +260,7 @@ function Home() {
   
   }, [boards]);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [userImg, setUserImg] = useState<string>(
-    "https://avataaars.io/?avatarStyle=Circle&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Blonde&facialHairType=Blank&clotheType=ShirtCrewNeck&clotheColor=Pink&eyeType=Surprised&eyebrowType=AngryNatural&mouthType=Smile&skinColor=Light"
-  ); 
+
   return (
     <>
       <div className="app_nav">
@@ -275,13 +273,8 @@ function Home() {
                 }}
               >
           <img
-            src={
-              userImg
-                ? userImg
-                : "https://avatars.dicebear.com/api/adventurer-neutral/mail%40ashallendesign.co.uk.svg"
-            }
+            src='avataaars.png'
             alt="A"
-           
             className="ProfileIcons"
           />
           {showDropdown && (
